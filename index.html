@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 （114-1）7年級-生物：第一次段考練功（福和考古題） 🌟</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- React & ReactDOM CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Babel CDN -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f8fafc;
+        }
+        .bouncy {
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .bouncy:hover {
+            transform: translateY(-2px);
+        }
+        .bouncy:active {
+            transform: translateY(1px) scale(0.98);
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .toast-enter {
+            animation: toastIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes toastIn {
+            from { opacity: 0; transform: translate(-50%, -20px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+        }
+        .img-shadow {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // 題庫資料 (50 題選擇題)
+        const questions = [
+  {
+    "id": 1,
+    "part": 1,
+    "q": "下列關於生命現象的說明，何者正確？",
+    "opts": [
+      "(A) 只能表現出一種生命現象也可以稱之為生物",
+      "(B) 擴散作用屬於生命現象中的運動與感應",
+      "(C) 鐘乳石堆積變大可稱為生長與發育",
+      "(D) 感應與運動是指生物察覺環境變化並產生適當的反應。"
+    ],
+    "ans": 3,
+    "exp": "(A) ✖ 生物通常具備代謝、生長、發育、感應、生殖等完整的生命現象，僅表現單一現象者（如鐘乳石長大）不算生物。<br>(B) ✖ 擴散作用是物理自然現象，不屬於生命現象。<br>(C) ✖ 鐘乳石變大是碳酸鈣礦物質沉澱堆疊，非細胞分裂的生長發育。<br>(D) ✔ <b>感應與運動</b>是指生物感知外界刺激（環境變化）並表現出相應行為或生理活動。"
+  },
+  {
+    "id": 2,
+    "part": 1,
+    "q": "下列有關生命現象與其舉例的配對，何者<b>錯誤</b>？",
+    "opts": [
+      "(A) 生長與發育：毛毛蟲從蛹中孵化成蛾",
+      "(B) 代謝：分解食物中的養分，合成身體所需的物質",
+      "(C) 感應與運動：動物協調肌肉活動進行覓食",
+      "(D) 生殖：豹紋守宮斷尾後長出再生尾巴。"
+    ],
+    "ans": 3,
+    "exp": "<b>【特別注意：再生 ≠ 生殖】</b><br>(D) 斷尾後長出再生尾巴是<b>「細胞分裂修復組織（再生）」</b>，並沒有產生新個體，故<b>不屬於生殖</b>！生殖必須繁衍出新的生命個體（如母守宮產卵孵化出小守宮）。"
+  },
+  {
+    "id": 3,
+    "part": 1,
+    "q": "「生物圈」是指生物能夠活動、生存的空間範圍。有關「生物圈」的敘述，下列何者<b>錯誤</b>？",
+    "opts": [
+      "(A) 生物圈內具有不同種類的環境提供生物生存",
+      "(B) 生物圈的範圍可能會隨著更多證據的發現或地球環境的改變而變動",
+      "(C) 同學們上體育課時，留下空無一人的教室，此時教室就暫時不是生物圈的範圍",
+      "(D) 生物圈內的生物需要陽光、空氣、水和養分等環境因子以維持生命。"
+    ],
+    "ans": 2,
+    "exp": "(C) 教室即使暫時無人，仍屬於生物能夠活動生存的空間範圍，且空氣中與環境中依然有微生物（細菌、真菌）存在，因此<b>仍然屬於生物圈的範圍</b>。"
+  },
+  {
+    "id": 4,
+    "part": 1,
+    "q": "圖一是地球垂直分層的示意圖，其中 A～F 六點代表地球上的不同位置，下列敘述何者正確？",
+    "opts": [
+      "(A) C 處無法觀察到任何生物存在",
+      "(B) 目前生物圈的範圍大約為 C～F",
+      "(C) A 處的光照強度比 F 處低",
+      "(D) 生物圈的厚度大約就是整個地球的半徑。"
+    ],
+    "ans": 1,
+    "exp": "生物圈的範圍約涵蓋海平面上下各約 10,000 公尺（約 20 公里），大致涵蓋從世界最高峰（C處）到最深海溝（F處）之間（即 <b>C～F</b>）。<br>(A) ✖ 最高峰 C 處仍可能有細菌、鳥類等生物蹤跡。<br>(C) ✖ 大氣高處 A 點陽光普照，深海 F 點幾乎完全無光。<br>(D) ✖ 生物圈厚度（約 20 公里）僅佔地球半徑（約 6400 公里）的極小一部分（如蘋果皮厚度）。",
+    "img": "第4題圖片.png"
+  },
+  {
+    "id": 5,
+    "part": 1,
+    "q": "下列哪些屬於：存在需要能量，並表現出生命現象的生物？<br>(甲) 野柳女王頭；(乙) 飛舞的枯葉蝶；(丙) 乾燥花；(丁) 移動中的尺蠖；(戊) 游動的草履蟲；(己) 小魚乾；(庚) 正值開花季的椰子樹。",
+    "opts": [
+      "(A) 甲乙丙戊",
+      "(B) 乙丁戊庚",
+      "(C) 乙丙丁戊",
+      "(D) 甲乙丙丁戊庚"
+    ],
+    "ans": 1,
+    "exp": "只有「活著的生物」才具有生命現象：<br>✔ <b>(乙) 飛舞的枯葉蝶、(丁) 移動中的尺蠖、(戊) 游動的草履蟲、(庚) 開花中的椰子樹</b>均為活體生物。<br>✖ (甲) 女王頭是岩石（無生物）、(丙) 乾燥花已死亡、(己) 小魚乾已死亡加工，均無生命現象。故選 (乙)(丁)(戊)(庚)。"
+  },
+  {
+    "id": 6,
+    "part": 1,
+    "q": "有關生物利用特殊的方式來適應環境的敘述，下列何者<b>錯誤</b>？",
+    "opts": [
+      "(A) 仙人掌具肥厚的根可儲藏水分",
+      "(B) 竹節蟲長相似樹枝，易躲藏",
+      "(C) 水筆仔生活在河口地，種子發育為胎生苗",
+      "(D) 枯葉蝶的翅膀似枯葉，不易被捕食者發現。"
+    ],
+    "ans": 0,
+    "exp": "<b>【仙人掌的適應構造】</b><br>(A) 仙人掌主要是利用<b>肥厚綠色的「莖」</b>來儲存水分與行光合作用，針狀葉是用來減少水分蒸散，並非肥厚的根！<br>(B)、(D) 為擬態與保護色；(C) 水筆仔以胎生苗適應缺氧鹽漬沼澤環境。"
+  },
+  {
+    "id": 7,
+    "part": 1,
+    "q": "佛來明培養細菌時，不慎在培養基上汙染了青黴菌，他發現青黴菌生長面積愈大，而細菌的生長面積愈來愈小，他<b>推測可能青黴菌產生某種物質，將細菌殺死</b>。後來實驗證明他的推測是正確的，因而發現了抗生素─青黴素。佛來明的這種推測，在科學研究歷程是屬於哪個步驟？",
+    "opts": [
+      "(A) 觀察",
+      "(B) 參考文獻資料",
+      "(C) 提出問題",
+      "(D) 形成假說。"
+    ],
+    "ans": 3,
+    "exp": "佛來明針對觀察到的現象所提出的合理解釋與推測（「推測可能青黴菌產生某種物質將細菌殺死」），屬於科學探究歷程中的<b>「形成假說」</b>。"
+  },
+  {
+    "id": 8,
+    "part": 1,
+    "q": "若要探究溫度對豌豆生長速度的影響，表一的哪兩組可做為實驗組和對照組？<br><div class='overflow-x-auto my-2'><table class='min-w-full text-xs md:text-sm border border-gray-300 text-center bg-white'><tr class='bg-gray-100 font-bold'><th class='p-1 border'>組別</th><th class='p-1 border'>溫度保持</th><th class='p-1 border'>澆水次數</th><th class='p-1 border'>水量</th><th class='p-1 border'>是否照光</th></tr><tr><td class='p-1 border font-bold'>甲</td><td class='p-1 border'>28℃</td><td class='p-1 border'>每日 1 次</td><td class='p-1 border'>每次 100mL</td><td class='p-1 border'>是</td></tr><tr><td class='p-1 border font-bold'>乙</td><td class='p-1 border'>15℃</td><td class='p-1 border'>每日 1 次</td><td class='p-1 border'>每次 100mL</td><td class='p-1 border'>否</td></tr><tr><td class='p-1 border font-bold'>丙</td><td class='p-1 border'>15℃</td><td class='p-1 border'>每日 2 次</td><td class='p-1 border'>每次 100mL</td><td class='p-1 border'>是</td></tr><tr><td class='p-1 border font-bold'>丁</td><td class='p-1 border'>28℃</td><td class='p-1 border'>每日 1 次</td><td class='p-1 border'>每次 100mL</td><td class='p-1 border'>否</td></tr></table></div>",
+    "opts": [
+      "(A) 甲丁",
+      "(B) 乙丁",
+      "(C) 丙丁",
+      "(D) 甲乙"
+    ],
+    "ans": 1,
+    "exp": "探究「溫度」的影響，操作變因（唯一不同處）必須是溫度，其餘控制變因（澆水次數、水量、照光）必須完全相同。<br>比對各組：<b>乙組（15℃）</b>與<b>丁組（28℃）</b>的澆水次數（每日1次）、水量（100mL）、照光（否）皆完全相同，僅溫度不同，故為最佳實驗組與對照組。"
+  },
+  {
+    "id": 9,
+    "part": 1,
+    "q": "關於使用酒精燈應注意的事項，下列何者正確？",
+    "opts": [
+      "(A) 用點燃的酒精燈引燃另一酒精燈",
+      "(B) 用濕抹布覆蓋打翻而著火的酒精燈",
+      "(C) 在酒精燈點燃時直接添加酒精",
+      "(D) 用口吹熄酒精燈。"
+    ],
+    "ans": 1,
+    "exp": "(A) ✖ 嚴禁用點燃的酒精燈互點，酒精易溢出起火。<br>(B) ✔ 酒精燈打翻起火時，應迅速以<b>濕抹布覆蓋</b>隔絕空氣滅火。<br>(C) ✖ 點燃時嚴禁添加酒精，以免回火爆炸。<br>(D) ✖ 熄滅應使用<b>燈帽蓋熄</b>，不可用口吹熄。",
+    "img": "第9題圖片.png"
+  },
+  {
+    "id": 10,
+    "part": 1,
+    "q": "五條悟利用複式顯微鏡觀察如圖二所示的「98」載玻片，若她在視野中只看到 8，則應將玻片往哪個方向移動才能在視野中看到所有的數字？",
+    "opts": [
+      "(A) 向右移動，可看到 98",
+      "(B) 向右移動，可看到 86",
+      "(C) 向左移動，可看到 98",
+      "(D) 向左移動，可看到 86。"
+    ],
+    "ans": 1,
+    "exp": "複式顯微鏡成像為<b>上下顛倒、左右相反（旋轉 180 度）</b>：<br>玻片上的「98」顛倒後呈<b>「86」</b>。目前視野中央只看到左邊的「8」，代表「6」在視野右邊外面。要將右邊的影像移進來，玻片必須<b>「向右移動」</b>，且最終在視野中看到的字像是<b>「86」</b>！",
+    "img": "第10題圖片.png"
+  },
+  {
+    "id": 11,
+    "part": 1,
+    "q": "炭治郎利用複式顯微鏡拍照得到甲、乙兩種生物影像如圖三，並註明使用的放大倍率。請問甲、乙兩種生物實際長度的比較，下列何者正確？",
+    "opts": [
+      "(A) 甲生物小於乙生物",
+      "(B) 甲生物和乙生物幾乎相等",
+      "(C) 乙生物小於甲生物",
+      "(D) 未記錄使用目鏡及物鏡分別為幾倍，無法比較。"
+    ],
+    "ans": 2,
+    "exp": "<b>實際大小 = 影像大小 ÷ 放大倍率</b>。<br>圖中甲與乙照片中的影像大小幾乎一樣長，但甲放大 100X、乙放大 600X。乙被放大了 600 倍才和甲放大 100 倍一樣大，代表乙的實際體積比甲小很多（乙約只有甲的 1/6），故<b>「乙生物小於甲生物」</b>。",
+    "img": "第11題圖片.png"
+  },
+  {
+    "id": 12,
+    "part": 1,
+    "q": "關於解剖顯微鏡的構造功能及操作過程，下列何者<b>錯誤</b>？",
+    "opts": [
+      "(A) 解剖顯微鏡可調整倍率調整輪更變換物鏡放大倍率",
+      "(B) 眼距調整器可配合使用者的眼距調整，使雙眼所見的視野合一",
+      "(C) 眼焦調整器可調節單邊目鏡的焦距，使雙眼均可清晰見物體",
+      "(D) 使用解剖顯微鏡觀察「bdp」時，呈現「dpq」。"
+    ],
+    "ans": 3,
+    "exp": "解剖顯微鏡成像是<b>「正立、左右不相反（與實物方向完全相同）」</b>的立體成像！<br>因此觀察「bdp」時，視野中所見依然為<b>「bdp」</b>，絕不會顛倒相反成「dpq」。"
+  },
+  {
+    "id": 13,
+    "part": 1,
+    "q": "有關觀察細胞形態探討活動的敘述，何者正確？",
+    "opts": [
+      "(A) 紫背鴨跖草葉片的保衛細胞呈半月形且具有葉綠體，可以行光合作用",
+      "(B) 洋蔥表皮細胞具有葉綠體可以行光合作用",
+      "(C) 顯微鏡下看到的人的口腔皮膜細胞彼此緊密相連，不易分離",
+      "(D) 經由亞甲藍液染色後的人類成熟紅血球細胞具有明顯的細胞核。"
+    ],
+    "ans": 0,
+    "exp": "(A) ✔ 保衛細胞呈半月形成對分布，內含葉綠體可進行光合作用以調節氣孔。<br>(B) ✖ 洋蔥鱗葉表皮細胞無葉綠體，無法行光合作用。<br>(C) ✖ 口腔皮膜細胞刮取後容易分散獨立分布。<br>(D) ✖ 人類成熟紅血球<b>沒有細胞核</b>，染色後也無細胞核。"
+  },
+  {
+    "id": 14,
+    "part": 1,
+    "q": "圖四的甲為口腔皮膜細胞圖片、乙為保衛細胞圖片，丙、丁、戊、己為其細胞構造，下列敘述何者正確？",
+    "opts": [
+      "(A) 丙、丁為兩細胞最外部的構造，應皆為細胞膜",
+      "(B) 戊、己為兩細胞內顆粒狀構造，應皆為細胞核",
+      "(C) 丙、丁為兩細胞最外部的構造：在甲圖為細胞膜，乙圖為細胞壁",
+      "(D) 戊、己為兩細胞內顆粒狀構造，需染色才能方便觀察。"
+    ],
+    "ans": 2,
+    "exp": "甲為動物細胞（口腔皮膜），最外層丙為<b>細胞膜</b>；乙為植物細胞（保衛細胞），最外層丁為<b>細胞壁</b>。<br>因此丙為細胞膜、丁為細胞壁，(C) 選項正確。<br>（保衛細胞內的葉綠體本身帶綠色，不需染色即可直接觀察）。",
+    "img": "第14題圖片.png"
+  },
+  {
+    "id": 15,
+    "part": 1,
+    "q": "圖五為植物細胞的示意圖，甲、乙、丙、丁中，何者的功能為控制物質進出細胞？",
+    "opts": [
+      "(A) 甲",
+      "(B) 乙",
+      "(C) 丙",
+      "(D) 丁"
+    ],
+    "ans": 1,
+    "exp": "圖五植物細胞構造剖析：<br>• 丁（最外層）：<b>細胞壁</b>（保護與維持細胞形狀）<br>• 乙（貼壁內層）：<b>細胞膜</b>（門衛！控制物質進出細胞）<br>• 丙（球狀核心）：<b>細胞核</b>（遺傳生命中樞）<br>• 甲（大水囊）：<b>液胞</b>（儲存水、養分與廢物）",
+    "img": "第15題圖片.png"
+  },
+  {
+    "id": 16,
+    "part": 1,
+    "q": "下列哪一構造在植物表皮細胞和動物神經細胞中皆可發現？",
+    "opts": [
+      "(A) 細胞壁",
+      "(B) 葉綠體",
+      "(C) 大型液胞",
+      "(D) 細胞核。"
+    ],
+    "ans": 3,
+    "exp": "動物細胞缺乏細胞壁與葉綠體，也沒有植物成熟期的大型液胞。兩者均為真核細胞，皆具備<b>細胞核、細胞質、細胞膜與粒線體</b>。"
+  },
+  {
+    "id": 17,
+    "part": 1,
+    "q": "關於擴散作用的敘述，下列何者<b>錯誤</b>？",
+    "opts": [
+      "(A) 物質從濃度高的地方往濃度低的地方移動",
+      "(B) 需要消耗細胞能量",
+      "(C) 氣體交換是擴散作用的例子",
+      "(D) 不需透過細胞膜即可發生。"
+    ],
+    "ans": 1,
+    "exp": "(B) 擴散作用是分子因隨機熱運動而自發由高濃度向低濃度散開的物理現象，<b>「不需要消耗細胞能量（ATP）」</b>！"
+  },
+  {
+    "id": 18,
+    "part": 1,
+    "q": "圖六是小花在複式顯微鏡下所看見的細胞影像，下列何者正確？",
+    "opts": [
+      "(A) 此為動物細胞",
+      "(B) 始終找不到葉綠體，可能原因為沒有染色",
+      "(C) 此種細胞形狀規則，呈扁平狀",
+      "(D) 製作此類細胞的玻片標本時，可使用本氏液作為細胞染色劑。"
+    ],
+    "ans": 2,
+    "exp": "圖六為洋蔥鱗葉表皮細胞，具細胞壁，細胞排列緊密如磚塊，形狀規則且呈扁平狀。<br>(A) ✖ 為植物細胞。<br>(B) ✖ 洋蔥表皮細胞本來就沒有葉綠體，與染色無關。<br>(D) ✖ 細胞染色常用亞甲藍液或碘液，本氏液是用於隔水加熱檢驗糖類的試劑。",
+    "img": "第18題圖片.png"
+  },
+  {
+    "id": 19,
+    "part": 1,
+    "q": "胺基酸分子如何進出細胞？",
+    "opts": [
+      "(A) 由滲透作用直接進出細胞",
+      "(B) 由擴散作用直接進出細胞",
+      "(C) 這些分子無法通過細胞膜",
+      "(D) 由細胞膜上特殊蛋白質的協助進出細胞。"
+    ],
+    "ans": 3,
+    "exp": "胺基酸、葡萄糖及部分礦物質等水溶性較大分子，無法直接穿透脂雙層膜，必須由<b>細胞膜上的特殊膜蛋白質（載體蛋白/通道蛋白）協助</b>進出細胞。"
+  },
+  {
+    "id": 20,
+    "part": 1,
+    "q": "圖七為物質通過細胞膜的模式圖，請問下列哪一組物質均需藉由細胞膜上特殊蛋白質的幫忙，才能進入細胞中？",
+    "opts": [
+      "(A) 澱粉、蛋白質",
+      "(B) 葡萄糖、礦物質",
+      "(C) 氧氣、胺基酸",
+      "(D) 水、二氧化碳、胺基酸。"
+    ],
+    "ans": 1,
+    "exp": "<b>【物質進出細胞模式】</b><br>• 直接穿透脂雙層：氧氣、二氧化碳、水（小分子脂溶性或微小分子）。<br>• 需膜蛋白質協助：<b>葡萄糖、胺基酸、礦物質（離子）</b>。<br>• 無法直接通過：澱粉、蛋白質等大分子。<br>故選 (B)。",
+    "img": "第20題圖片.png"
+  },
+  {
+    "id": 21,
+    "part": 1,
+    "q": "將植物細胞置於下列何者中，一段時間後，細胞狀態最可能類似如圖八？",
+    "opts": [
+      "(A) 蒸餾水",
+      "(B) 與細胞質濃度相同之食鹽水",
+      "(C) 海水",
+      "(D) 清水。"
+    ],
+    "ans": 2,
+    "exp": "圖八呈現植物細胞脫水萎縮、原生質體與細胞壁分離的<b>「質離現象（質壁分離）」</b>。這必須發生在<b>高濃度溶液（如海水、濃食鹽水）</b>中，細胞內的水分向外滲透流失。",
+    "img": "第21題圖片.png"
+  },
+  {
+    "id": 22,
+    "part": 1,
+    "q": "承第 21 題，請問圖八的甲其實是植物細胞的哪一個構造?",
+    "opts": [
+      "(A) 細胞核",
+      "(B) 細胞膜",
+      "(C) 細胞壁",
+      "(D) 細胞質。"
+    ],
+    "ans": 1,
+    "exp": "植物細胞發生質離時，最外層剛硬的細胞壁保持原本形狀，而內側的<b>細胞膜（甲）</b>與細胞質隨著水分流失而萎縮向內凹陷，與細胞壁分離。",
+    "img": "第22題圖片.png"
+  },
+  {
+    "id": 23,
+    "part": 1,
+    "q": "碧芬到野外採集臺灣欒樹標本，她觀察到保衛細胞、葉表皮、花及種子，則下列何者為正確的植物組成層次？",
+    "opts": [
+      "(A) 組織→細胞→器官→器官系統",
+      "(B) 組織→細胞→器官→個體",
+      "(C) 細胞→組織→器官→器官系統",
+      "(D) 細胞→組織→器官→個體。"
+    ],
+    "ans": 3,
+    "exp": "<b>植物的組成層次中「沒有器官系統」！</b><br>完整階層為：細胞（如保衛細胞）→ 組織（如葉表皮）→ 器官（如花、種子）→ 個體（臺灣欒樹）。"
+  },
+  {
+    "id": 24,
+    "part": 1,
+    "q": "下列哪一種生物的組成層次中，沒有「器官系統」這個層級？",
+    "opts": [
+      "(A) 黑冠麻鷺",
+      "(B) 人",
+      "(C) 盤古蟾蜍",
+      "(D) 仙人掌。"
+    ],
+    "ans": 3,
+    "exp": "黑冠麻鷺（鳥類）、人（哺乳類）、盤古蟾蜍（兩生類）均為動物，具有消化系統、神經系統等器官系統；而<b>仙人掌為植物，組成層次不含「器官系統」</b>。"
+  },
+  {
+    "id": 25,
+    "part": 1,
+    "q": "我們撕下葉片的下表皮以觀察植物細胞，請問下表皮在組成層次中是屬於哪一階層？",
+    "opts": [
+      "(A) 組織",
+      "(B) 器官",
+      "(C) 器官系統",
+      "(D) 細胞。"
+    ],
+    "ans": 0,
+    "exp": "葉片的下表皮是由表皮細胞、保衛細胞等相同起源與功能的細胞組合而成，負責保護與調控氣孔，屬於<b>「組織（表皮組織）」</b>。"
+  },
+  {
+    "id": 26,
+    "part": 2,
+    "q": "鈺芬使用複式顯微鏡觀察如圖九的生物(新月藻)，有關新月藻和狗的比較敘述（表二），下列選項何者<b>錯誤</b>？<br><div class='overflow-x-auto my-2'><table class='min-w-full text-xs md:text-sm border border-gray-300 text-center bg-white'><tr class='bg-gray-100 font-bold'><th class='p-1 border'>項目</th><th class='p-1 border'>新月藻</th><th class='p-1 border'>狗</th></tr><tr><td class='p-1 border font-bold'>甲</td><td class='p-1 border'>有葉綠體，可行光合作用</td><td class='p-1 border'>無葉綠體，要從外界攝食</td></tr><tr><td class='p-1 border font-bold'>乙</td><td class='p-1 border'>單一細胞可完成所有的生命現象</td><td class='p-1 border'>單一細胞不能完成所有的生命現象</td></tr><tr><td class='p-1 border font-bold'>丙</td><td class='p-1 border'>細胞內所含各種構造無特定的機能</td><td class='p-1 border'>細胞內各種構造有特定的機能</td></tr><tr><td class='p-1 border font-bold'>丁</td><td class='p-1 border'>細胞無明顯分工合作現象</td><td class='p-1 border'>細胞有分工合作現象</td></tr></table></div>",
+    "opts": [
+      "(A) 甲",
+      "(B) 乙",
+      "(C) 丙",
+      "(D) 丁"
+    ],
+    "ans": 2,
+    "exp": "(C) ✖ 新月藻雖然是單細胞生物，但屬於真核生物，其細胞內所含的胞器（如葉綠體行光合作用、粒線體行呼吸作用、細胞核調控遺傳）<b>均具有各自特定的生理機能</b>，並非無特定機能！故丙錯誤。",
+    "img": "第26題圖片.png"
+  },
+  {
+    "id": 27,
+    "part": 2,
+    "q": "單細胞生物和多細胞生物的區別，主要在於下列何項？",
+    "opts": [
+      "(A) 細胞是否會代謝、分裂",
+      "(B) 細胞大小、壽命的不同",
+      "(C) 細胞是否可行光合作用",
+      "(D) 細胞是否具有分工現象。"
+    ],
+    "ans": 3,
+    "exp": "單細胞生物靠單一細胞獨立承擔所有生理機能；多細胞生物則由分化的細胞群各司其職，具有高度的<b>「分工合作現象」</b>。"
+  },
+  {
+    "id": 28,
+    "part": 2,
+    "q": "下列哪一種養分的功能主要是構成身體組織，促進生長發育和修補組織？",
+    "opts": [
+      "(A) 醣類",
+      "(B) 脂質",
+      "(C) 蛋白質",
+      "(D) 維生素。"
+    ],
+    "ans": 2,
+    "exp": "<b>蛋白質</b>是肌肉、器官、毛髮及酵素的主要構成原料，主要功能為建造生長發育組織與修補受損組織；醣類與脂質主要作為能量來源。"
+  },
+  {
+    "id": 29,
+    "part": 2,
+    "q": "鈣是人體重要的礦物質，主要功能是？",
+    "opts": [
+      "(A) 構成紅血球中的血紅素",
+      "(B) 維持骨骼和牙齒的健康",
+      "(C) 可以預防夜盲症",
+      "(D) 可以提供能量。"
+    ],
+    "ans": 1,
+    "exp": "(A) 鐵是構成血紅素的關鍵。<br>(B) ✔ <b>鈣</b>是構成骨骼與牙齒的重要成分，能預防骨質疏鬆。<br>(C) 維生素 A 預防夜盲症。<br>(D) 礦物質無法提供能量。"
+  },
+  {
+    "id": 30,
+    "part": 2,
+    "q": "請問礦物質和維生素在人體中扮演何種角色？",
+    "opts": [
+      "(A) 幫助食物分解",
+      "(B) 產生抗體以抵抗病菌",
+      "(C) 維持身體正常的生理機能",
+      "(D) 提供成長所需的能量。"
+    ],
+    "ans": 2,
+    "exp": "礦物質與維生素屬於不產能的營養素，需求量雖小，但在體內參與酵素輔助因子與生理代謝調節，主要角色為<b>維持人體正常的生理機能</b>。"
+  },
+  {
+    "id": 31,
+    "part": 2,
+    "q": "正鴻做營養成分的測試，實驗裝備如圖十，取一片乾淨的載玻片，甲處放一粒熟米飯，乙處放蘋果碎末，然後在兩處各加上一滴碘液檢測，請問正鴻可觀察到下列何種現象？",
+    "opts": [
+      "(A) 甲呈藍黑色，乙無變化",
+      "(B) 乙呈藍黑色，甲無變化",
+      "(C) 甲、乙均呈藍黑色",
+      "(D) 甲、乙均無變化。"
+    ],
+    "ans": 0,
+    "exp": "<b>碘液</b>是用於檢驗<b>澱粉</b>的試劑，遇澱粉會呈現<b>藍黑色</b>。<br>米飯富含澱粉，遇碘液呈藍黑色；熟蘋果主要成分為葡萄糖與果糖，澱粉含量極少或無，滴加碘液呈現原黃褐色（無變化）。故選 (A)。",
+    "img": "第31題圖片.png"
+  },
+  {
+    "id": 32,
+    "part": 2,
+    "q": "阿翰在顯微鏡底下看到一隻草履蟲如圖十一，他拍照並在照片上標示比例尺，請問這隻草履蟲的長度大約多少微米？",
+    "opts": [
+      "(A) 約 0.38 微米",
+      "(B) 約 380 微米",
+      "(C) 約 3.80 微米",
+      "(D) 約 3800 微米。"
+    ],
+    "ans": 1,
+    "exp": "由比例尺可知標示黑線長度代表 190 μm。草履蟲蟲體的長度大約為該線段的 2 倍長：<br>190 μm × 2 ≈ <b>380 微米（μm）</b>。",
+    "img": "第32題圖片.png"
+  },
+  {
+    "id": 33,
+    "part": 2,
+    "q": "下列物體的大小，何者超過人類肉眼可見的範圍？（即肉眼無法看見，需借助顯微鏡）",
+    "opts": [
+      "(A) 大腸桿菌",
+      "(B) 雞蛋",
+      "(C) 金魚",
+      "(D) 榕樹。"
+    ],
+    "ans": 0,
+    "exp": "人眼分辨極限約為 0.1 mm（100 微米）。<b>大腸桿菌</b>大小僅約 1～3 微米（μm），遠小於肉眼可見極限，必須使用顯微鏡方能看見。"
+  },
+  {
+    "id": 34,
+    "part": 2,
+    "q": "<b>【題組 (一)】</b>老師要同學培育綠豆以觀察種子生長過程。有人問：「怎樣才能讓綠豆快點發芽？」真希說：「可能要有水分及適當的光照和溫度吧！」於是優太用綠豆進行四組實驗，其處理情形及結果如表三所示（＋表示有、－表示沒有）。回答 34-36 題：<br><div class='overflow-x-auto my-2'><table class='min-w-full text-xs md:text-sm border border-gray-300 text-center bg-white'><tr class='bg-gray-100 font-bold'><th class='p-1 border'>組別</th><th class='p-1 border'>照光</th><th class='p-1 border'>泡水</th><th class='p-1 border'>溫度</th><th class='p-1 border'>7天後的發芽率</th></tr><tr><td class='p-1 border font-bold'>甲</td><td class='p-1 border'>＋</td><td class='p-1 border'>＋</td><td class='p-1 border'>30 ℃</td><td class='p-1 border'>90％</td></tr><tr><td class='p-1 border font-bold'>乙</td><td class='p-1 border'>－</td><td class='p-1 border'>＋</td><td class='p-1 border'>30 ℃</td><td class='p-1 border'>80％</td></tr><tr><td class='p-1 border font-bold'>丙</td><td class='p-1 border'>＋</td><td class='p-1 border'>－</td><td class='p-1 border'>30 ℃</td><td class='p-1 border'>0％</td></tr><tr><td class='p-1 border font-bold'>丁</td><td class='p-1 border'>－</td><td class='p-1 border'>－</td><td class='p-1 border'>20 ℃</td><td class='p-1 border'>0％</td></tr></table></div><br>34. 真希說：「可能要有水分及適當的光照和溫度吧！」這句話屬於科學方法中的哪一步驟？",
+    "opts": [
+      "(A) 觀察",
+      "(B) 提出問題",
+      "(C) 形成假說",
+      "(D) 分析實驗數據。"
+    ],
+    "ans": 2,
+    "exp": "真希針對「怎樣才能讓綠豆快點發芽」的問題，提出可能的猜測與解釋性答案，此步驟為科學方法中的<b>「形成假說」</b>。"
+  },
+  {
+    "id": 35,
+    "part": 2,
+    "q": "承第 34 題題組，如果要探討水分是否會影響綠豆發芽，優太應選擇下列哪兩組進行實驗，並做觀察比較？",
+    "opts": [
+      "(A) 甲乙",
+      "(B) 甲丙",
+      "(C) 乙丙",
+      "(D) 乙丁。"
+    ],
+    "ans": 1,
+    "exp": "探究「水分」影響時，操作變因僅能為「泡水」，照光與溫度必須保持一致。<br>對照表三：<b>甲組（＋照光、＋泡水、30℃）</b>與<b>丙組（＋照光、－泡水、30℃）</b>，只有泡水不同，其餘變因皆相同，故選 (B)。"
+  },
+  {
+    "id": 36,
+    "part": 2,
+    "q": "承第 34 題題組，優太的實驗支持何種變因對於綠豆的發芽率影響最大？",
+    "opts": [
+      "(A) 水分",
+      "(B) 光線",
+      "(C) 溫度",
+      "(D) 和水分、光線、溫度都沒相關。"
+    ],
+    "ans": 0,
+    "exp": "比較實驗結果：<br>有泡水的甲（90%）與乙（80%）發芽率極高；而未泡水的丙（0%）與丁（0%）完全不發芽。這證明<b>「水分」</b>是決定綠豆發芽最關鍵的變因！"
+  },
+  {
+    "id": 37,
+    "part": 2,
+    "q": "<b>【題組 (二)】</b>悠仁用複式顯微鏡的同一個目鏡分別與四個不同倍數的物鏡組合來觀察人類成熟紅血球細胞玻片。回答 37-38 題：<br><br>37. 當成像清晰時，每一物鏡與載玻片的距離如選項所示。如果載玻片位置不變，哪一個物鏡在視野中看到的細胞數最多？",
+    "opts": [
+      "(A) 物鏡長度長、離載玻片最近",
+      "(B) 物鏡長度中等偏長",
+      "(C) 物鏡長度中等偏短",
+      "(D) 物鏡長度最短、離載玻片最遠。"
+    ],
+    "ans": 3,
+    "exp": "<b>倍率越低 ➔ 視野範圍越大 ➔ 看到的細胞數目越多！</b><br>在複式顯微鏡中，放大倍率最低的物鏡長度最短，其物鏡鏡頭與載玻片的工作距離最遠，因此選項 (D) 之倍率最低、視野最廣、看到的細胞數最多。",
+    "img": "第37題圖片.png"
+  },
+  {
+    "id": 38,
+    "part": 2,
+    "q": "承第 37 題題組，請問悠仁會在顯微鏡底下看到什麼畫面？",
+    "opts": [
+      "(A) 細長分枝狀細胞",
+      "(B) 扁平多邊形具細胞核細胞",
+      "(C) 雙凹圓盤狀無細胞核之紅血球",
+      "(D) 具明顯大型深色細胞核之球形細胞"
+    ],
+    "ans": 2,
+    "exp": "人類成熟紅血球具有<b>雙凹圓盤狀、中央透亮且「沒有細胞核」</b>的特徵，顯微鏡下呈圓形均勻分散影像，對應選項 (C)。",
+    "img": "第38題圖片.png"
+  },
+  {
+    "id": 39,
+    "part": 2,
+    "q": "<b>【題組 (三)】</b>圖十二為動物細胞、圖十三為植物細胞的模式圖，甲~辛為細胞構造的代號。請回答 39-41 題：<br><br>39. 動物細胞形狀通常不規則的原因是因為缺乏圖十三的哪一種構造?",
+    "opts": [
+      "(A) 丁",
+      "(B) 戊",
+      "(C) 庚",
+      "(D) 辛"
+    ],
+    "ans": 0,
+    "exp": "動物細胞缺乏<b>細胞壁（丁）</b>，因此無法維持固定剛硬的形狀，外觀多較不規則。",
+    "img": "第39題圖片.png"
+  },
+  {
+    "id": 40,
+    "part": 2,
+    "q": "承第 39 題題組，這兩個細胞都無法進行光合作用，請問是缺乏下列哪一個構造?",
+    "opts": [
+      "(A) 葉綠體（雙層膜具囊狀膜綠色構造）",
+      "(B) 粒線體（內膜褶皺構造）",
+      "(C) 高基氏體",
+      "(D) 內質網"
+    ],
+    "ans": 0,
+    "exp": "光合作用的進行場所是<b>葉綠體</b>（選項 A），此兩種細胞皆缺乏葉綠體，故無法行光合作用。",
+    "img": "第40題圖片.png"
+  },
+  {
+    "id": 41,
+    "part": 2,
+    "q": "承第 39 題題組，內含遺傳物質 DNA 的構造分別是圖十二與圖十三中的何種構造?",
+    "opts": [
+      "(A) 甲戊",
+      "(B) 乙庚",
+      "(C) 丙己",
+      "(D) 甲辛"
+    ],
+    "ans": 2,
+    "exp": "內含遺傳物質 DNA 的構造為<b>細胞核</b>。<br>在圖十二動物細胞中為<b>丙</b>，在圖十三植物細胞中為<b>己</b>，故選 (丙己)。",
+    "img": "第41題圖片.png"
+  },
+  {
+    "id": 42,
+    "part": 2,
+    "q": "<b>【題組 (四)】</b>小嘉利用複式顯微鏡觀察洋蔥表皮細胞、風車草葉片下表皮與人類口腔皮膜細胞，以下為觀察後所畫出的細胞圖，請依圖示與代號，回答 42-45 題：<br><br>42. 小嘉觀察後，畫出的細胞與細胞構造標示的配對，何者正確？",
+    "opts": [
+      "(A) 圖十四為風車草葉片下表皮，乙為細胞壁、丙為細胞核",
+      "(B) 圖十五為口腔皮膜細胞，丁為細胞核、己為細胞膜",
+      "(C) 圖十五為洋蔥表皮細胞，戊為細胞膜、己為細胞壁",
+      "(D) 圖十六為洋蔥表皮細胞，庚為細胞核、辛為細胞膜。"
+    ],
+    "ans": 2,
+    "exp": "對應各圖：<br>• 圖十四：風車草下表皮（保衛細胞與氣孔）<br>• 圖十五：<b>洋蔥表皮細胞</b>，外側己為<b>細胞壁</b>，貼壁內層戊為<b>細胞膜</b>，丁為細胞核。故 (C) 正確。<br>• 圖十六：口腔皮膜細胞（分散不規則）。",
+    "img": "第42題圖片.png"
+  },
+  {
+    "id": 43,
+    "part": 2,
+    "q": "承第 42 題題組，下列有關三種細胞觀察的描述，何者正確？",
+    "opts": [
+      "(A) 洋蔥表皮細胞染色後，可看見細胞核與葉綠體",
+      "(B) 風車草保衛細胞需染色，才能清楚看到葉綠體",
+      "(C) 口腔皮膜細胞不用染色就能清楚看見細胞核",
+      "(D) 洋蔥表皮細胞不用染色就能看見細胞壁。"
+    ],
+    "ans": 3,
+    "exp": "(A) ✖ 洋蔥表皮細胞無葉綠體。<br>(B) ✖ 保衛細胞的葉綠體本身為鮮綠色，不染色即可見。<br>(C) ✖ 口腔皮膜細胞核需染色（如亞甲藍液）才能清楚顯現。<br>(D) ✔ <b>細胞壁厚實且折光率高，不染色就能清晰看出邊界與形狀</b>。"
+  },
+  {
+    "id": 44,
+    "part": 2,
+    "q": "承第 42 題題組，下列關於三種細胞構造的比較(如表四)，何者<b>不正確</b>？<br><div class='overflow-x-auto my-2'><table class='min-w-full text-xs md:text-sm border border-gray-300 text-center bg-white'><tr class='bg-gray-100 font-bold'><th class='p-1 border'>構造</th><th class='p-1 border'>風車草保衛細胞</th><th class='p-1 border'>洋蔥表皮細胞</th><th class='p-1 border'>口腔皮膜細胞</th></tr><tr><td class='p-1 border font-bold'>(甲) 細胞核</td><td class='p-1 border'>有</td><td class='p-1 border'>有</td><td class='p-1 border'>有</td></tr><tr><td class='p-1 border font-bold'>(乙) 細胞質</td><td class='p-1 border'>有</td><td class='p-1 border'>有</td><td class='p-1 border'>有</td></tr><tr><td class='p-1 border font-bold'>(丙) 葉綠體</td><td class='p-1 border'>有</td><td class='p-1 border text-red-500 font-bold'>有</td><td class='p-1 border'>無</td></tr><tr><td class='p-1 border font-bold'>(丁) 細胞壁</td><td class='p-1 border'>有</td><td class='p-1 border'>有</td><td class='p-1 border'>無</td></tr></table></div>",
+    "opts": [
+      "(A) 甲",
+      "(B) 乙",
+      "(C) 丙",
+      "(D) 丁"
+    ],
+    "ans": 2,
+    "exp": "表四中<b>(丙) 葉綠體</b>標示洋蔥表皮細胞「有」葉綠體是<b>錯誤</b>的！洋蔥鱗葉長在地下，不見光，表皮細胞缺乏葉綠體。"
+  },
+  {
+    "id": 45,
+    "part": 2,
+    "q": "承第 42 題題組，小嘉想要知道蚊子的幼蟲孑孓為何要一段時間浮到水面上，因此依照科學方法來探究，以下選項何者是<b>形成假說</b>？",
+    "opts": [
+      "(A) 孑孓浮到水面應該是要進行呼吸",
+      "(B) 孑孓是生活在水中，有特殊的呼吸器官",
+      "(C) 分成兩組進行實驗，一組不讓孑孓浮到水面，另一組可以",
+      "(D) 無法浮到水面的孑孓經過 3 天都已死亡。"
+    ],
+    "ans": 0,
+    "exp": "(A) 「孑孓浮到水面應該是要進行呼吸」是對觀察提問所提出的可能原因推測，為<b>「形成假說」</b>。<br>(C) 為設計實驗步驟；(D) 為實驗觀察與數據結果。"
+  },
+  {
+    "id": 46,
+    "part": 2,
+    "q": "<b>【閱讀素養題】2025 年搞笑諾貝爾獎-生物學獎《畫有斑馬條紋的黑毛和牛可以降低吸血蠅的叮咬》</b><br>日本科學家兒嶋朋貴驗證了在黑毛和牛體表塗上手繪白色斑馬條紋（4-5公分）可以降低吸血蠅叮咬與牛隻驅蠅行為。實驗發現實驗組牛隻身上吸血蠅總數是控制組的一半，驅蠅頻率亦顯著降低。<br><br>46. 根據上述文章，請問斑馬身上的條紋具有什麼功能以獲取更佳的生存機會，且<b>已被研究證實</b>？",
+    "opts": [
+      "(A) 利用身上條紋偽裝",
+      "(B) 利用身上條紋迷惑掠食者",
+      "(C) 利用身上條紋調節體溫",
+      "(D) 利用身上條紋降低被吸血蠅叮咬。"
+    ],
+    "ans": 3,
+    "exp": "文中明確提及：「已有相當多研究證實，<b>斑馬條紋確實能有效降低吸血蠅的叮咬</b>。」其他功能多為尚未完全定論之假說。",
+    "img": "第46題圖片.png"
+  },
+  {
+    "id": 47,
+    "part": 2,
+    "q": "承第 46 題閱讀文章，下列何者為研究中的操作變因？",
+    "opts": [
+      "(A) 實驗物種：牛/斑馬",
+      "(B) 實驗處理：牛/塗有白條紋的牛",
+      "(C) 實驗物種的天敵：有吸血蠅的環境/無吸血蠅的環境",
+      "(D) 實驗時間：上午吸血蠅叮咬頻率/下午吸血蠅叮咬頻率。"
+    ],
+    "ans": 1,
+    "exp": "<b>操作變因（人為改變的唯一條件）</b>是實驗組與控制組的差異：即在牛隻體表是否塗繪白色條紋（<b>牛 / 塗有白條紋的牛</b>）。",
+    "img": "第47題圖片.png"
+  },
+  {
+    "id": 48,
+    "part": 2,
+    "q": "承第 46 題閱讀文章，可以得到何種結論？",
+    "opts": [
+      "(A) 飼養斑馬取代黑毛和牛可降低飼養成本，增加獲利",
+      "(B) 在黑毛和牛上塗白色條紋無法降低吸血蠅干擾",
+      "(C) 在黑毛和牛上塗白色條紋會增加牛隻的驅蠅行為",
+      "(D) 在黑毛和牛上塗白色條紋可以有效降低吸血蠅干擾。"
+    ],
+    "ans": 3,
+    "exp": "實驗結果證明：塗有白條紋的牛身上吸血蠅數量減半，且驅蠅動作顯著少於控制組，結論為<b>在黑毛和牛上塗白色條紋可以有效降低吸血蠅干擾</b>。",
+    "img": "第48題圖片.png"
+  },
+  {
+    "id": 49,
+    "part": 2,
+    "q": "承第 46 題閱讀文章，若作者想透過觀察吸血蠅的觸角類型，區分吸血蠅的種類，應該使用何種顯微鏡觀察？",
+    "opts": [
+      "(A) 解剖顯微鏡",
+      "(B) 複式顯微鏡",
+      "(C) 掃描式電子顯微鏡",
+      "(D) 穿透式電子顯微鏡。"
+    ],
+    "ans": 0,
+    "exp": "吸血蠅體長約 3.0mm~8.0mm，體型較大且不透光。觀察其外部立體構造（觸角類型）最適合使用<b>解剖顯微鏡</b>（可觀察不透光標本且具立體感）。"
+  },
+  {
+    "id": 50,
+    "part": 2,
+    "q": "承第 49 題，轉動顯微鏡倍率的過程中，吸血蠅偏離畫面中心(如圖二十)，請問要將玻片往什麼方向移動，才能讓吸血蠅回到畫面正中央？",
+    "opts": [
+      "(A) 右上",
+      "(B) 右下",
+      "(C) 左上",
+      "(D) 左下。"
+    ],
+    "ans": 0,
+    "exp": "<b>【陷阱題！解剖顯微鏡與複式顯微鏡之差異】</b><br>第 49 題使用的是<b>「解剖顯微鏡」</b>！解剖顯微鏡成像為<b>正立像（方向與實物完全相同）</b>。<br>圖二十中吸血蠅偏向視野的右上角，要讓它移到畫面中央，載玻片必須直接朝物體所在方向（<b>右上</b>）移動！",
+    "img": "第50題圖片.png"
+  }
+];
+
+        const { useState, useEffect } = React;
+        const safeGetItem = (key, defaultValue) => {
+            try {
+                const item = localStorage.getItem(key);
+                if (item) {
+                    const parsed = JSON.parse(item);
+                    if (key.includes('wrongIds') || key.includes('records')) {
+                        return Array.isArray(parsed) ? parsed : defaultValue;
+                    }
+                    return typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : defaultValue;
+                }
+            } catch (error) { console.warn('LocalStorage Error:', error); }
+            return defaultValue;
+        };
+        const safeSetItem = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); } catch (error) {} };
+        const safeRemoveItem = (key) => { try { localStorage.removeItem(key); } catch (error) {} };
+        const safeClear = () => { try { localStorage.clear(); } catch (error) {} };
+
+        const Header = () => (
+            <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-10 py-4 mb-6">
+                <div className="max-w-4xl mx-auto px-4 flex items-center justify-center gap-3">
+                    <span className="text-3xl">🧪</span>
+                    <h1 className="text-xl md:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-green-500 tracking-wide text-center">
+                        🌟 （114-1）7年級-生物：第一次段考練功（福和考古題） 🌟
+                    </h1>
+                    <span className="text-3xl">✨</span>
+                </div>
+            </header>
+        );
+
+        const QuestionCard = ({ item, index, selectedIdx, onSelect, isReviewMode }) => {
+            const showResult = selectedIdx !== undefined && selectedIdx !== null;
+            const handleSelect = (idx) => { if (!showResult) onSelect(item.id, idx, idx === item.ans); };
+            const createMarkup = (htmlStr) => ({ __html: htmlStr });
+
+            return (
+                <div className="mb-10 w-full max-w-3xl mx-auto fade-in">
+                    <div className="bg-white rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden border border-gray-100">
+                        <div className={`p-5 border-b border-gray-50 flex gap-3 ${isReviewMode ? 'bg-gradient-to-r from-rose-100 to-red-100' : 'bg-gradient-to-r from-blue-100 to-teal-100'}`}>
+                            <div className={`flex-shrink-0 w-10 h-10 bg-white rounded-full flex items-center justify-center font-black shadow-sm text-lg ${isReviewMode ? 'text-rose-600' : 'text-teal-600'}`}>
+                                {item.id}
+                            </div>
+                            <div className="text-base md:text-lg font-bold text-gray-800 self-center leading-relaxed" dangerouslySetInnerHTML={createMarkup(item.q)} />
+                        </div>
+                        
+                        {item.img && (
+                            <div className="p-4 bg-gray-50 flex flex-col items-center justify-center border-b border-gray-100">
+                                <img src={item.img} alt={`第${item.id}題圖片`} className="max-w-full h-auto max-h-72 object-contain img-shadow rounded-lg border-2 border-white" />
+                                <span className="text-xs text-gray-400 mt-1">【附圖：{item.img}】</span>
+                            </div>
+                        )}
+
+                        <div className="p-5 space-y-3">
+                            {item.opts.map((opt, idx) => {
+                                const isSelected = selectedIdx === idx;
+                                const isCorrect = idx === item.ans;
+                                let btnClass = "w-full text-left p-4 rounded-2xl border-2 transition-all duration-300 ease-out relative flex items-center gap-4 group ";
+                                let icon = null;
+                                if (!showResult) {
+                                    btnClass += isReviewMode ? "border-rose-50 bg-white hover:border-rose-300 hover:bg-rose-50 bouncy text-gray-700 cursor-pointer shadow-sm" : "border-blue-50 bg-white hover:border-teal-300 hover:bg-teal-50 bouncy text-gray-700 cursor-pointer shadow-sm";
+                                    icon = <div className={`w-6 h-6 rounded-full border-2 ${isReviewMode ? 'border-gray-300 group-hover:border-rose-400' : 'border-gray-300 group-hover:border-teal-400'}`}></div>;
+                                } else {
+                                    btnClass += " cursor-default ";
+                                    if (isCorrect) {
+                                        btnClass += "border-green-400 bg-green-50 text-green-800 shadow-md transform scale-[1.01]";
+                                        icon = <div className="flex-shrink-0 w-7 h-7 rounded-full bg-green-500 text-white flex items-center justify-center shadow-sm"><i className="fas fa-check"></i></div>;
+                                    } else if (isSelected && !isCorrect) {
+                                        btnClass += "border-red-300 bg-red-50 text-red-700 opacity-90";
+                                        icon = <div className="flex-shrink-0 w-7 h-7 rounded-full bg-red-400 text-white flex items-center justify-center shadow-sm"><i className="fas fa-times"></i></div>;
+                                    } else {
+                                        btnClass += "border-gray-100 bg-gray-50 text-gray-400";
+                                        icon = <div className="w-6 h-6 rounded-full border-2 border-gray-200"></div>;
+                                    }
+                                }
+                                return (
+                                    <button key={idx} onClick={() => handleSelect(idx)} className={btnClass} disabled={showResult}>
+                                        {icon}
+                                        <span className="text-base md:text-lg" dangerouslySetInnerHTML={createMarkup(opt)} />
+                                    </button>
+                                );
+                            })}
+                        </div>
+
+                        {showResult && (
+                            <div className="m-5 mt-0 bg-yellow-50 border-2 border-yellow-300 rounded-2xl p-6 relative fade-in">
+                                <div className="absolute -top-4 left-6 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white px-5 py-1.5 rounded-full font-bold shadow-md flex items-center gap-2 tracking-wider">
+                                    <i className="fas fa-lightbulb"></i> ✨ 觀念大補帖
+                                </div>
+                                <div className="mt-3 text-gray-800 leading-relaxed text-base md:text-lg">
+                                    {selectedIdx === item.ans ? 
+                                        <div className="mb-3 font-bold text-green-600 flex items-center gap-2">
+                                            <i className="fas fa-star"></i> {isReviewMode ? "太棒了！你成功克服這題了 🎉" : "太棒了！答對囉 🎉"}
+                                        </div> : 
+                                        <div className="mb-3 font-bold text-red-500 flex items-center gap-2">
+                                            <i className="fas fa-question-circle"></i> 哎呀，再想想看！來看看哪裡卡住了 🤔
+                                        </div>
+                                    }
+                                    <div className="space-y-2 border-t border-yellow-200 pt-3" dangerouslySetInnerHTML={createMarkup(item.exp)} />
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        };
+
+        const App = () => {
+            const [activeTab, setActiveTab] = useState('part1');
+            const [reviewAnswers, setReviewAnswers] = useState({});
+            const [answers, setAnswers] = useState(() => safeGetItem('magic_exam_progress_answers_fuhe', {}));
+            const [wrongIds, setWrongIds] = useState(() => safeGetItem('magic_exam_progress_wrongIds_fuhe', []));
+            const [records, setRecords] = useState(() => safeGetItem('magic_exam_records_fuhe', []));
+            const [toastMessage, setToastMessage] = useState(null);
+            const [showResetModal, setShowResetModal] = useState(false);
+            const [resetStep, setResetStep] = useState(0);
+
+            useEffect(() => {
+                safeSetItem('magic_exam_progress_answers_fuhe', answers);
+                safeSetItem('magic_exam_progress_wrongIds_fuhe', wrongIds);
+            }, [answers, wrongIds]);
+
+            useEffect(() => { safeSetItem('magic_exam_records_fuhe', records); }, [records]);
+            useEffect(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, [activeTab]);
+
+            const showToast = (msg) => { setToastMessage(msg); setTimeout(() => setToastMessage(null), 3000); };
+
+            const handleSelect = (qId, idx, isCorrect) => {
+                if (activeTab === 'review') { 
+                    setReviewAnswers(prev => ({ ...prev, [qId]: idx })); 
+                } else {
+                    setAnswers(prev => ({ ...prev, [qId]: idx }));
+                    if (!isCorrect) setWrongIds(prev => prev.includes(qId) ? prev : [...prev, qId]);
+                }
+            };
+
+            const handleSaveRecord = () => {
+                const answeredCount = Object.keys(answers).length;
+                if (answeredCount === 0) return showToast("目前還沒有作答紀錄可以存檔喔！");
+                const newRecord = {
+                    id: Date.now(), timestamp: new Date().toLocaleString('zh-TW'),
+                    attempt: records.length + 1, totalAnswered: answeredCount,
+                    correctCount: answeredCount - wrongIds.length, wrongCount: wrongIds.length,
+                    wrongIds: [...wrongIds]
+                };
+                setRecords([...records, newRecord]);
+                showToast(`✅ 已存檔！第 ${newRecord.attempt} 次作答紀錄保存成功。`);
+            };
+
+            const handleExport = (type) => {
+                if (wrongIds.length === 0) return showToast("🎉 太棒了！目前沒有錯題，不需要匯出！");
+                const wrongQs = questions.filter(q => wrongIds.includes(q.id));
+                const baseURI = window.location.href.split('?')[0].split('#')[0].replace(/\/[^\/]*$/, '/');
+                let htmlContent = `<!DOCTYPE html><html lang="zh-TW"><head><meta charset="UTF-8"><title>錯題匯出 - 🌟 （114-1）7年級-生物：第一次段考練功（福和考古題） 🌟</title><base href="${baseURI}"><style>body{font-family:'Noto Sans TC',sans-serif;line-height:1.6;padding:20px;color:#333;max-width:800px;margin:0 auto;}h1{text-align:center;color:#0d9488;}.meta-info{text-align:center;color:#666;margin-bottom:30px;}.question-card{border:2px solid #e5e7eb;padding:20px;margin-bottom:25px;border-radius:12px;page-break-inside:avoid;}.q-title{font-weight:bold;font-size:1.3em;color:#0f766e;margin-bottom:15px;border-bottom:1px solid #e5e7eb;padding-bottom:10px;}.q-img{max-width:100%;max-height:250px;display:block;margin:15px auto;border:1px solid #ccc;}.options{margin-bottom:20px;}.option{padding:8px 12px;margin-bottom:5px;border-radius:6px;background-color:#f9fafb;}.correct{color:#16a34a;font-weight:bold;background-color:#f0fdf4;border:1px solid #bbf7d0;}.explanation{background:#fffbeb;padding:15px;border-radius:8px;border-left:5px solid #f59e0b;}.exp-title{font-weight:bold;color:#d97706;margin-bottom:8px;}@media print{body{padding:0;}.question-card{border:1px solid #999;page-break-inside:avoid;box-shadow:none;}}</style></head><body><h1>🌟 專屬錯題本 🌟</h1><div class="meta-info">測驗：🌟 （114-1）7年級-生物：第一次段考練功（福和考古題） 🌟<br>匯出時間：${new Date().toLocaleString('zh-TW')} | 總錯題數：${wrongQs.length} 題</div>`;
+                wrongQs.forEach(q => {
+                    htmlContent += `<div class="question-card"><div class="q-title">第 ${q.id} 題</div><div>${q.q}</div>${q.img ? `<img class="q-img" src="${q.img}" />` : ''}<div class="options">${q.opts.map((opt, idx) => `<div class="option ${idx === q.ans ? 'correct' : ''}">${idx === q.ans ? '✅ ' : '⬜ '}${opt}</div>`).join('')}</div><div class="explanation"><div class="exp-title">✨ 觀念大補帖：</div><div>${q.exp}</div></div></div>`;
+                });
+                htmlContent += `</body></html>`;
+                if (type === 'html') {
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(new Blob([htmlContent], { type: 'text/html' }));
+                    a.download = `錯題本_${new Date().getTime()}.html`;
+                    a.click(); showToast("⬇️ HTML 檔案已下載！");
+                } else if (type === 'pdf') {
+                    const printWindow = window.open('', '_blank');
+                    if (printWindow) { printWindow.document.write(htmlContent); printWindow.document.close(); printWindow.onload = () => { printWindow.focus(); printWindow.print(); }; } 
+                    else showToast("❌ 無法開啟列印視窗，請允許瀏覽器彈出視窗！");
+                }
+            };
+
+            const executeReset = () => {
+                if (resetStep === 1) {
+                    setAnswers({}); setWrongIds([]); setReviewAnswers({});
+                    safeRemoveItem('magic_exam_progress_answers_fuhe'); safeRemoveItem('magic_exam_progress_wrongIds_fuhe');
+                    showToast("🗑️ 已刪除此次作答紀錄！");
+                } else if (resetStep === 2) {
+                    setAnswers({}); setWrongIds([]); setReviewAnswers({}); setRecords([]);
+                    safeClear(); showToast("💥 已清空本機所有作答與存檔紀錄！");
+                }
+                setShowResetModal(false); setResetStep(0);
+            };
+
+            let currentQuestions = [];
+            if (activeTab === 'part1') currentQuestions = questions.filter(q => q.part === 1);
+            else if (activeTab === 'part2') currentQuestions = questions.filter(q => q.part === 2);
+            else if (activeTab === 'review') currentQuestions = questions.filter(q => wrongIds.includes(q.id));
+
+            return (
+                <div className="min-h-screen pb-20 relative">
+                    <Header />
+                    {toastMessage && (
+                        <div className="fixed top-24 left-1/2 transform -translate-x-1/2 z-50 toast-enter">
+                            <div className="bg-gray-800 text-white px-6 py-3 rounded-full shadow-xl font-bold flex items-center gap-3">
+                                {toastMessage}
+                            </div>
+                        </div>
+                    )}
+                    {showResetModal && (
+                        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 fade-in">
+                            <div className="bg-white rounded-3xl p-6 md:p-8 max-w-sm w-full shadow-2xl">
+                                {resetStep === 0 ? (
+                                    <>
+                                        <h3 className="text-2xl font-bold text-gray-800 mb-2 flex items-center gap-2"><i className="fas fa-triangle-exclamation text-rose-500"></i> 砍掉重練</h3>
+                                        <div className="space-y-3 mt-4">
+                                            <button onClick={() => setResetStep(1)} className="w-full text-left px-5 py-4 rounded-xl bg-orange-50 text-orange-700 font-bold border border-orange-200 shadow-sm bouncy">① 僅刪除此次作答紀錄</button>
+                                            <button onClick={() => setResetStep(2)} className="w-full text-left px-5 py-4 rounded-xl bg-rose-50 text-rose-700 font-bold border border-rose-200 shadow-sm bouncy">② 刪除本機所有紀錄</button>
+                                            <button onClick={() => {setShowResetModal(false); setResetStep(0);}} className="w-full text-left px-5 py-4 rounded-xl bg-gray-50 text-gray-700 font-bold border border-gray-200 shadow-sm bouncy">③ 算了，不要刪了</button>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <h3 className="text-2xl font-bold text-rose-600 mb-4"><i className="fas fa-circle-question mr-2"></i>再次確認</h3>
+                                        <p className="text-gray-700 mb-8 font-medium leading-relaxed">{resetStep === 1 ? "確定要刪除「此次作答紀錄」嗎？" : "確定要刪除「本機所有紀錄」嗎？(無法復原)"}</p>
+                                        <div className="flex gap-3">
+                                            <button onClick={() => {setShowResetModal(false); setResetStep(0);}} className="flex-1 py-3 rounded-xl bg-gray-100 text-gray-700 font-bold bouncy">取消</button>
+                                            <button onClick={executeReset} className="flex-1 py-3 rounded-xl bg-rose-500 text-white font-bold shadow-md bouncy">確定刪除</button>
+                                        </div>
+                                    </>
+                                )}
+                            </div>
+                        </div>
+                    )}
+                    
+                    <div className="max-w-3xl mx-auto px-4 mb-6 flex flex-wrap gap-2 md:gap-3 justify-center">
+                        <button onClick={handleSaveRecord} className="flex-1 min-w-[140px] py-2.5 px-4 rounded-xl font-bold bg-indigo-50 text-indigo-700 border-2 border-indigo-200 bouncy flex items-center justify-center gap-2"><i className="fas fa-save"></i> 紀錄存檔</button>
+                        <button onClick={() => handleExport('html')} className="flex-1 min-w-[140px] py-2.5 px-4 rounded-xl font-bold bg-blue-50 text-blue-700 border-2 border-blue-200 bouncy flex items-center justify-center gap-2"><i className="fas fa-download"></i> 匯出 (HTML)</button>
+                        <button onClick={() => handleExport('pdf')} className="flex-1 min-w-[140px] py-2.5 px-4 rounded-xl font-bold bg-emerald-50 text-emerald-700 border-2 border-emerald-200 bouncy flex items-center justify-center gap-2"><i className="fas fa-print"></i> 列印 / PDF</button>
+                        <button onClick={() => {setShowResetModal(true); setResetStep(0);}} className="flex-1 min-w-[140px] py-2.5 px-4 rounded-xl font-bold bg-rose-50 text-rose-700 border-2 border-rose-200 bouncy flex items-center justify-center gap-2"><i className="fas fa-trash-can"></i> 砍掉重練</button>
+                    </div>
+
+                    <div className="max-w-3xl mx-auto px-4 mb-8 flex flex-wrap gap-3">
+                        <button onClick={() => setActiveTab('part1')} className={`flex-1 min-w-[100px] py-3 px-2 rounded-2xl font-bold shadow-sm ${activeTab === 'part1' ? 'bg-teal-500 text-white transform -translate-y-1' : 'bg-white text-gray-500'}`}>第一部份 (1~25)</button>
+                        <button onClick={() => setActiveTab('part2')} className={`flex-1 min-w-[100px] py-3 px-2 rounded-2xl font-bold shadow-sm ${activeTab === 'part2' ? 'bg-teal-500 text-white transform -translate-y-1' : 'bg-white text-gray-500'}`}>第二部份 (26~50)</button>
+                        <button onClick={() => setActiveTab('review')} className={`flex-1 min-w-[100px] py-3 px-2 rounded-2xl font-bold shadow-sm relative ${activeTab === 'review' ? 'bg-rose-500 text-white transform -translate-y-1' : 'bg-white text-gray-500'}`}>
+                            錯題複習
+                            {Array.isArray(wrongIds) && wrongIds.length > 0 && (<span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-black px-2 py-1 rounded-full animate-bounce">{wrongIds.length}</span>)}
+                        </button>
+                        <button onClick={() => setActiveTab('history')} className={`flex-1 min-w-[100px] py-3 px-2 rounded-2xl font-bold shadow-sm ${activeTab === 'history' ? 'bg-indigo-500 text-white transform -translate-y-1' : 'bg-white text-gray-500'}`}>歷史紀錄</button>
+                    </div>
+
+                    {activeTab === 'history' ? (
+                        <div className="px-4 max-w-3xl mx-auto fade-in">
+                            <h2 className="text-xl font-bold text-indigo-700 mb-6"><i className="fas fa-clock-rotate-left mr-2"></i>我的存檔紀錄</h2>
+                            {records.length === 0 ? (
+                                <div className="text-center py-16 bg-white rounded-3xl shadow-sm border"><p className="text-gray-500 font-medium">目前沒有存檔紀錄喔！</p></div>
+                            ) : (
+                                <div className="space-y-4">
+                                    {[...records].reverse().map(record => (
+                                        <div key={record.id} className="bg-white p-5 rounded-2xl shadow-sm border border-l-4 border-l-indigo-500">
+                                            <div className="text-xs text-gray-400 font-bold mb-1">{record.timestamp}</div>
+                                            <div className="font-extrabold text-lg text-gray-800 mb-1">第 {record.attempt} 次挑戰紀錄</div>
+                                            <div className="text-sm font-medium text-gray-600">作答：{record.totalAnswered} 題 | <span className="text-green-600">答對：{record.correctCount} 題</span> | <span className="text-rose-500">答錯：{record.wrongCount} 題</span></div>
+                                            {record.wrongIds && record.wrongIds.length > 0 && (<div className="mt-2 bg-rose-50 text-rose-700 px-4 py-2 rounded-xl text-sm font-bold">錯題：{record.wrongIds.join(', ')}</div>)}
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    ) : activeTab === 'review' && wrongIds.length === 0 ? (
+                        <div className="text-center py-20 bg-white rounded-3xl shadow-sm max-w-3xl mx-auto fade-in"><div className="text-6xl mb-4">🌟</div><h2 className="text-2xl font-bold text-teal-600">太棒了！目前沒有錯題！</h2></div>
+                    ) : (
+                        <div className="px-4">
+                            {activeTab === 'review' && (
+                                <div className="max-w-3xl mx-auto mb-6 flex justify-between items-center fade-in"><h2 className="text-xl font-bold text-rose-600"><i className="fas fa-fire mr-2"></i>錯題特訓區</h2><button onClick={() => setReviewAnswers({})} className="px-4 py-2 bg-rose-100 text-rose-700 rounded-full font-bold text-sm shadow-sm bouncy"><i className="fas fa-redo mr-1"></i> 重新測驗</button></div>
+                            )}
+                            {currentQuestions.map((q, idx) => (<QuestionCard key={`${activeTab}-${q.id}`} item={q} index={idx} selectedIdx={activeTab === 'review' ? reviewAnswers[q.id] : answers[q.id]} onSelect={handleSelect} isReviewMode={activeTab === 'review'} />))}
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
